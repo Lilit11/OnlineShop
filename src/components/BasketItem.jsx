@@ -1,9 +1,9 @@
-export const BasketItem = ({id, title, price, count,onAdd, onSub, onDel, sale})=>{
+export const BasketItem = ({id, title, price, count,onAdd, onSub, onDel})=>{
     return <tr>
        <td>{title}</td>
        <td>{price}</td>
        <td>{count}</td>
-       <td>{price*count + sale}</td>
+       <td>{price*count}</td>
        <td>
         <button onClick={()=>onAdd(id)}>+</button>
         <button onClick={()=>onSub(id)}>-</button>

@@ -1,12 +1,12 @@
 import { BasketItem } from "./BasketItem"
 
-export const Basket = ({ items, onAdd, onSub, onDel, onSale, isVisible = true , sale}) => {
+export const Basket = ({ items, onAdd, onSub, onDel, total }) => {
     return <div>
         <h3>Basket</h3>
         <br></br>
-        {
+        {/* {
             isVisible && <button onClick={() => onSale()} > Sale </button>
-        }
+        } */}
         <table>
             <thead>
                 <tr>
@@ -19,10 +19,12 @@ export const Basket = ({ items, onAdd, onSub, onDel, onSale, isVisible = true , 
             </thead>
             <tbody>
                 {
-                    items.map(elm => <BasketItem key={elm.id} {...elm} onAdd={onAdd} onSub={onSub} onDel={onDel} sale={sale} />)
+                    items.map(elm => <BasketItem key={elm.id} {...elm} onAdd={onAdd} onSub={onSub} onDel={onDel} />)
                 }
 
-              
+                <tr>
+                    <th>Total {total}</th>
+                </tr>
 
             </tbody>
         </table>

@@ -1,12 +1,18 @@
 import { ProductItem } from "./ProductItem"
+import { useContext } from "react"
+import { ProductContext } from "./context"
+export const ProductList = () => {
 
-export const ProductList = ({items, onMove})=>{
+    const { state: { products } } = useContext(ProductContext)
+
     return <div>
         <h3>Product List</h3>
         <div className="list">
             {
-                items.map(elm=> <ProductItem key={elm.id} {...elm} onMove ={onMove}/>)
+                products.map(elm => <ProductItem key={elm.id} {...elm} />)
             }
         </div>
     </div>
 }
+
+

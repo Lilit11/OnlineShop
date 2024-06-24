@@ -1,12 +1,16 @@
 import { BasketItem } from "./BasketItem"
+import { useContext } from "react"
+import { ProductContext } from "./context"
 
-export const Basket = ({ items, onAdd, onSub, onDel, total }) => {
+export const Basket = () => {
+
+    const { state: { basket } } = useContext(ProductContext)
+    const total = basket.map(book => book.price * book.count).reduce((a, b) => a + b, 0)
+
     return <div>
         <h3>Basket</h3>
         <br></br>
-        {/* {
-            isVisible && <button onClick={() => onSale()} > Sale </button>
-        } */}
+
         <table>
             <thead>
                 <tr>
@@ -19,10 +23,13 @@ export const Basket = ({ items, onAdd, onSub, onDel, total }) => {
             </thead>
             <tbody>
                 {
-                    items.map(elm => <BasketItem key={elm.id} {...elm} onAdd={onAdd} onSub={onSub} onDel={onDel} />)
+
+                    basket.map(elm => <BasketItem key={elm.id} {...elm} />)
+
                 }
 
                 <tr>
+
                     <th>Total {total}</th>
                 </tr>
 
